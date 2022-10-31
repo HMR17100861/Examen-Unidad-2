@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"crossorigin="anonymous"></script>
+    <title>Bienvenido al sistema gestor de carro</title>
+</head>
+<body>
+    <div>
+        <a href="nueva_persona"><button type="button" class="btn btn-outline-success"> Agregar cliente</button></a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Domicilio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for persona in persona %}
+                <tr>
+                    <td>{{persona.id}}</td>
+                    <td>{{persona.nombre}}{{persona.apellido}}</td>
+                    <td>{{persona.email}}</td>
+                    <td>{{persona.domicilio}}</td>
+                    <td><a href="detalle_persona/{{persona.id}}"><button type="button" class="btn btn-outline-info">Detalles del cliente</button></a></td>
+                    <td><a href="editar_persona/{{persona.id}}"><button type="button" class="btn btn-outline-warning">Editar cliente</button></a></td>
+                    <td><a href="eliminar_persona/{{persona.id}}"><button type="button" class="btn btn-outline-danger">Eliminar cliente</button></a></td>  
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+        <a href="{% url 'index'%}"><button type="button" class="btn btn-outline-info">Regresar inicio</button></a>
+    </div>
+    
+</body>
+</html>
